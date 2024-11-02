@@ -56,7 +56,8 @@ db();
 
 // app is listening...
 app.listen(PORT, () => {
-  console.log(`App is listening to http://localhost:${PORT}`);
+  //127.0.0.1:3000/
+  http: console.log(`App is listening to http://127.0.0.1:${PORT}`);
 });
 
 // Export the Express API
