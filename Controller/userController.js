@@ -22,12 +22,12 @@ export var home = async (req, res) => {
 //   }
 // };
 
-export var getUser = (req, res) => {
+export var getUser = async (req, res) => {
   const id = req.query.id;
   const name = req.query.name;
   console.log(name + " :::::: id: " + id);
-  const user1 = User.findById(id);
-  const user = User.findOne({
+  const user1 = await User.findById(id);
+  const user = await User.findOne({
     name: name,
     // phoneNumber: name,
     // email: name,
@@ -46,10 +46,10 @@ export var getUser = (req, res) => {
       res.send(user);
       console.log(user);
     } catch (error) {
-      res.status(500).send("Error in searching for this user");
+      res.status(500).send("Error in searching for this user " + user);
     }
   } else {
-    res.status(400).send("User doesnot exist");
+    res.status(400).send("User doesnot exist : " + user);
   }
 };
 
