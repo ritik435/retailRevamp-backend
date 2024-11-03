@@ -41,8 +41,8 @@
 // export default app;
 
 import Express from "express";
-import router from "../Routes/index.js";
-import db from "../Util/mongoose.js";
+import router from "./Routes/index.js";
+import db from "./Util/mongoose.js";
 import bodyParser from "body-parser";
 
 const PORT = process.env.PORT || 3000;
