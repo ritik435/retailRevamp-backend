@@ -41,16 +41,10 @@ export var getUser = async (req, res) => {
   if (user != null) {
     try {
       res.set("Access-Control-Allow-Origin", "*");
-      try {
-        const userJson = user.toJSON();
-        res.json(userJson); // Alternatively, use user.toJSON()
-        console.log(" 111: " + userJson);
-      } catch (error) {
-        res.send(
-          `{id:${user._id},name:${user.name},businessName:${user.businessName},email:${user.email},password:${user.password},phoneNumber:${user.phoneNumber}}`
-        ); // Alternatively, use user.toJSON()
-        console.log(" 222: " + user);
-      }
+      res.send(
+        `{id:${user._id},name:${user.name},businessName:${user.businessName},email:${user.email},password:${user.password},phoneNumber:${user.phoneNumber}}`
+      ); // Alternatively, use user.toJSON()
+      console.log(" 222: " + user);
     } catch (error) {
       res.status(500).send("Error in searching for this user " + user);
     }
