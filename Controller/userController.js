@@ -28,9 +28,7 @@ export var getUser = async (req, res) => {
   console.log(name + " :::::: id: " + id);
   // const user1 = await User.findById(id);
   const user = await User.findOne({
-    name: name,
-    // phoneNumber: name,
-    // email: name,
+    $or: [{ name: name }, { email: name }, { phoneNumber: name }],
   }); // You can replace `_id` with any other field you want to query
 
   // const user = await User.findById(id);
