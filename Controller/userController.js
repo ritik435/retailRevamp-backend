@@ -26,7 +26,7 @@ export var getUser = async (req, res) => {
   const id = req.query.id;
   const name = req.query.name;
   console.log(name + " :::::: id: " + id);
-  const user1 = await User.findById(id);
+  // const user1 = await User.findById(id);
   const user = await User.findOne({
     name: name,
     // phoneNumber: name,
@@ -39,7 +39,7 @@ export var getUser = async (req, res) => {
   //   description: "succesfully done",
   //   result: post,
   // });
-  console.log(user + " ::: \n user1::: " + user1);
+  console.log(user + " ::: \n user1::: ");
   if (user != null) {
     try {
       res.set("Access-Control-Allow-Origin", "*");
@@ -59,14 +59,15 @@ export var postUser = async (req, res) => {
   //   res.status(404).send("Not found");
   //   return;
   // }
+  const name = req.body.name;
   // console.log(req.body + " \n " + req.body.name);
-  // const isUser = User.findOne({ name: req.body.name });
-  // console.log(isUser);
-  // if (isUser != null) {
-  //   console.log("Already exist User : : : " + req.body);
-  //   res.status(400).send("User already exist");
-  //   return;
-  // }
+  const isUser = await User.findOne({ name });
+  console.log(isUser);
+  if (isUser != null) {
+    console.log("Already exist User : : : " + req.body);
+    res.status(400).send("User already exist");
+    return;
+  }
   const user = new User(req.body);
   // // const apiResponse = new ApiResponse({
   // //   status: 200,
