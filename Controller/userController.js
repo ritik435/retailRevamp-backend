@@ -28,8 +28,8 @@ export var getUser = (req, res) => {
   console.log(name + " :::::: id: " + id);
   const user = User.findOne({
     name: name,
-    phoneNumber: name,
-    email: name,
+    // phoneNumber: name,
+    // email: name,
   }); // You can replace `_id` with any other field you want to query
 
   // const user = await User.findById(id);
@@ -38,6 +38,7 @@ export var getUser = (req, res) => {
   //   description: "succesfully done",
   //   result: post,
   // });
+  console.log(user + " ::: ");
   if (user != null) {
     try {
       res.set("Access-Control-Allow-Origin", "*");
