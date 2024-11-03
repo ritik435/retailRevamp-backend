@@ -41,8 +41,8 @@
 // export default app;
 
 import Express from "express";
-import router from "./Routes/index.js";
-import db from "./Util/mongoose.js";
+import router from "../Routes/index.js";
+import db from "../Util/mongoose.js";
 import bodyParser from "body-parser";
 
 const PORT = process.env.PORT || 3000;
@@ -51,7 +51,7 @@ const app = Express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(Express.json());
 
-app.use("/", router);
+app.use("/api", router);
 db();
 
 // app is listening...
