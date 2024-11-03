@@ -41,7 +41,7 @@ export var getUser = async (req, res) => {
   if (user != null) {
     try {
       res.set("Access-Control-Allow-Origin", "*");
-      res.json(user);
+      res.json(user.toObject()); // Alternatively, use user.toJSON()
       console.log(user);
     } catch (error) {
       res.status(500).send("Error in searching for this user " + user);
@@ -75,7 +75,7 @@ export var postUser = async (req, res) => {
 
   try {
     await user.save();
-    res.json(user);
+    res.json(user.toObject()); // Alternatively, use user.toJSON()
   } catch (error) {
     res.status(500).send("Error in creating a user");
   }
