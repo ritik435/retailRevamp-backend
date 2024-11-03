@@ -65,7 +65,7 @@ export var postUser = async (req, res) => {
   //   res.status(400).send("User already exist");
   //   return;
   // }
-  // const user = new User(req.body);
+  const user = new User(req.body);
   // // const apiResponse = new ApiResponse({
   // //   status: 200,
   // //   description: "succesfully done",
