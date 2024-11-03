@@ -51,7 +51,7 @@ const app = Express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(Express.json());
 
-app.use("/", router);
+app.use("/api", router);
 db();
 
 // app is listening...
