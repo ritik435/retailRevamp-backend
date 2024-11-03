@@ -64,8 +64,8 @@ const dbname = "retailRevamp";
 // };
 
 const connectDB = async () => {
-  const mongoURI = `mongodb+srv://${username}:${password}@${cluster}/${dbname}?retryWrites=true&w=majority`;
-  // "mongodb+srv://developerritik435:mylifemyrules@retailrevamp.23tdi.mongodb.net/?retryWrites=true&w=majority&appName=retailRevamp";
+  // const mongoURI = `mongodb+srv://${username}:${password}@${cluster}/${dbname}?retryWrites=true&w=majority`;
+  "mongodb+srv://developerritik435:mylifemyrules@retailrevamp.23tdi.mongodb.net/retailRevamp?retryWrites=true&w=majority&appName=retailRevamp";
 
   mongoose
     .connect(mongoURI, {
