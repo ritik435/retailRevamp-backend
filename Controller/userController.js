@@ -41,9 +41,14 @@ export var getUser = async (req, res) => {
   if (user != null) {
     try {
       res.set("Access-Control-Allow-Origin", "*");
-      const userJson = user.toJSON();
-      res.json(userJson); // Alternatively, use user.toJSON()
-      console.log(" : " + userJson);
+      try {
+        const userJson = user.toJSON();
+        res.json(userJson); // Alternatively, use user.toJSON()
+        console.log(" 111: " + userJson);
+      } catch (error) {
+        res.json(user); // Alternatively, use user.toJSON()
+        console.log(" 222: " + user);
+      }
     } catch (error) {
       res.status(500).send("Error in searching for this user " + user);
     }
