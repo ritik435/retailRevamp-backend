@@ -45,7 +45,7 @@ import router from "./Routes/index.js";
 import db from "./Util/mongoose.js";
 import bodyParser from "body-parser";
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const app = Express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
