@@ -53,24 +53,24 @@ export var getUser = async (req, res) => {
 
 export var postUser = async (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
-  if (req.body == null || req.body.name == null) {
-    res.status(404).send("Not found");
-    return;
-  }
-  console.log(req.body + " \n " + req.body.name);
-  const isUser = User.findOne({ name: req.body.name });
-  console.log(isUser);
-  if (isUser != null) {
-    console.log("Already exist User : : : " + req.body);
-    res.status(400).send("User already exist");
-    return;
-  }
-  const user = new User(req.body);
-  // const apiResponse = new ApiResponse({
-  //   status: 200,
-  //   description: "succesfully done",
-  //   result: user,
-  // });
+  // if (req.body == null || req.body.name == null) {
+  //   res.status(404).send("Not found");
+  //   return;
+  // }
+  // console.log(req.body + " \n " + req.body.name);
+  // const isUser = User.findOne({ name: req.body.name });
+  // console.log(isUser);
+  // if (isUser != null) {
+  //   console.log("Already exist User : : : " + req.body);
+  //   res.status(400).send("User already exist");
+  //   return;
+  // }
+  // const user = new User(req.body);
+  // // const apiResponse = new ApiResponse({
+  // //   status: 200,
+  // //   description: "succesfully done",
+  // //   result: user,
+  // // });
 
   try {
     await user.save();
