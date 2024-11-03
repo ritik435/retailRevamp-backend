@@ -46,7 +46,9 @@ export var getUser = async (req, res) => {
         res.json(userJson); // Alternatively, use user.toJSON()
         console.log(" 111: " + userJson);
       } catch (error) {
-        res.json(user); // Alternatively, use user.toJSON()
+        res.send(
+          `{id:${user._id},name:${user.name},businessName:${user.businessName},email:${user.email},password:${user.password},phoneNumber:${user.phoneNumber}}`
+        ); // Alternatively, use user.toJSON()
         console.log(" 222: " + user);
       }
     } catch (error) {
