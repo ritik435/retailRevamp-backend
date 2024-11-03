@@ -25,7 +25,7 @@ export var home = async (req, res) => {
 export var getUser = async (req, res) => {
   const id = req.query.id;
   const name = req.query.name;
-  console.log(id);
+  console.log(name + " :::::: id: " + id);
   const user = await User.findOne({
     name: name,
     phoneNumber: name,
