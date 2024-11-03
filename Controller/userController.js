@@ -26,6 +26,7 @@ export var getUser = (req, res) => {
   const id = req.query.id;
   const name = req.query.name;
   console.log(name + " :::::: id: " + id);
+  const user1 = User.findById(id);
   const user = User.findOne({
     name: name,
     // phoneNumber: name,
@@ -38,7 +39,7 @@ export var getUser = (req, res) => {
   //   description: "succesfully done",
   //   result: post,
   // });
-  console.log(user + " ::: ");
+  console.log(user + " ::: \n user1::: " + user1);
   if (user != null) {
     try {
       res.set("Access-Control-Allow-Origin", "*");
