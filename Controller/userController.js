@@ -29,7 +29,7 @@ export var getUser = async (req, res) => {
   // const user1 = await User.findById(id);
   const user = await User.findOne({
     $or: [{ name: name }, { email: name }, { phoneNumber: name }],
-  }).lean(); // You can replace `_id` with any other field you want to query
+  }); // You can replace `_id` with any other field you want to query
 
   // const user = await User.findById(id);
   // const apiResponse = new ApiResponse({
