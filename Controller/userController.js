@@ -25,6 +25,7 @@ export var home = async (req, res) => {
 export var getUser = async (req, res) => {
   const id = req.query.id;
   const name = req.query.name;
+  const password = req.query.password;
   console.log(name + " :::::: id: " + id);
   // const user1 = await User.findById(id);
   const user = await User.findOne({
@@ -37,20 +38,24 @@ export var getUser = async (req, res) => {
   //   description: "succesfully done",
   //   result: post,
   // });
-  console.log(user + " ::: \n user1::: ");
-  if (user != null) {
-    try {
-      res.set("Access-Control-Allow-Origin", "*");
-      // res.send(
-      //   `{id:${user._id},name:${user.name},businessName:${user.businessName},email:${user.email},password:${user.password},phoneNumber:${user.phoneNumber}}`
-      // ); // Alternatively, use user.toJSON()
-      res.json(user.toObject()); // Alternatively, use user.toJSON()
-      console.log(" 222: " + user);
-    } catch (error) {
-      res.status(500).send("Error in searching for this user " + user);
-    }
+  if (!user.password == password) {
+    res.status(500).send("Wrong credentials" + user);
   } else {
-    res.status(400).send("User doesnot exist : " + user);
+    console.log(user + " ::: \n user1::: ");
+    if (user != null) {
+      try {
+        res.set("Access-Control-Allow-Origin", "*");
+        // res.send(
+        //   `{id:${user._id},name:${user.name},businessName:${user.businessName},email:${user.email},password:${user.password},phoneNumber:${user.phoneNumber}}`
+        // ); // Alternatively, use user.toJSON()
+        res.json(user.toObject()); // Alternatively, use user.toJSON()
+        console.log(" 222: " + user);
+      } catch (error) {
+        res.status(500).send("Error in searching for this user " + user);
+      }
+    } else {
+      res.status(400).send("User doesnot exist : " + user);
+    }
   }
 };
 
