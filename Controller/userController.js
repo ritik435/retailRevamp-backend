@@ -41,7 +41,7 @@ export var getUser = async (req, res) => {
   console.log(" ::: \n password , name::: " + password + " : " + user.password);
   if (user.password != password) {
     console.log(" ::: \n password , name::: " + password + " : " + name);
-    res.status(500).send("Wrong credentials");
+    res.status(500).json({ message: "Wrong credentials" });
   } else {
     console.log(user + " ::: \n user1::: ");
     if (user != null) {
