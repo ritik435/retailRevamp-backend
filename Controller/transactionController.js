@@ -15,7 +15,7 @@ export var getAllTransactions = async (req, res) => {
   //   });
   try {
     res.set("Access-Control-Allow-Origin", "*");
-    res.json(transactions.toObject());
+    res.json(transactions);
   } catch (error) {
     res.send(
       new ApiResponse({ status: 500, description: "unsuccesfully done" })
