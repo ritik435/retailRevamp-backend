@@ -6,6 +6,7 @@ export var home = async (req, res) => {
 };
 
 export var getAllTransactions = async (req, res) => {
+  const userId = req.query.userId;
   const transactions = await Transaction.find({ userId });
   //   const apiResponse = new ApiResponse({
   //     status: 200,
@@ -14,13 +15,14 @@ export var getAllTransactions = async (req, res) => {
   //   });
   try {
     res.set("Access-Control-Allow-Origin", "*");
-    res.send(transactions);
+    res.json(transactions.toObject());
   } catch (error) {
     res.send(
       new ApiResponse({ status: 500, description: "unsuccesfully done" })
     );
   }
 };
+
 export var deleteAllTransactions = async (req, res) => {
   const userId = req.query.userId;
   const result = await Transaction.deleteMany({ userId });
