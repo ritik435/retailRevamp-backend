@@ -1,4 +1,4 @@
-import { UUID } from "mongodb";
+import { Timestamp, UUID } from "mongodb";
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 
@@ -19,19 +19,23 @@ const transactionSchema = new Schema(
     // boolean edited;
     userName: {
       type: String,
+      required: false,
+    },
+    date: {
+      type: Timestamp,
       required: true,
     },
     balance: {
       type: Number,
-      required: true,
+      required: false,
     },
     totalAmount: {
       type: Number,
-      required: true,
+      required: false,
     },
     amountTransferred: {
       type: Number,
-      required: true,
+      required: false,
     },
     mode: {
       type: String,
@@ -49,21 +53,21 @@ const transactionSchema = new Schema(
       type: String,
       required: false,
     },
-    khataId: {
-      type: UUID,
-      required: false,
-    },
+    // khataId: {
+    //   type: UUID,
+    //   required: false,
+    // },
     khataNumber: {
       type: String,
       required: false,
     },
     deleted: {
       type: Boolean,
-      required: true,
+      required: false,
     },
     edited: {
       type: Boolean,
-      required: true,
+      required: false,
     },
   },
   { __v: false }
