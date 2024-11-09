@@ -64,6 +64,7 @@ export var postTransaction = async (req, res) => {
   // });
 
   try {
+    console.log("transaction111 : " + transaction);
     await transaction.save();
     console.log("transaction : " + transaction);
     res.json(transaction.toObject());
