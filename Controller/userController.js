@@ -58,7 +58,8 @@ export var getUser = async (req, res) => {
         res.status(500).send("Error in searching for this user " + user);
       }
     } else {
-      res.status(400).send("User doesnot exist : " + user);
+      // res.status(400).send("User doesnot exist : " + user);
+      res.status(400).json(user.toObject());
     }
   }
 };
