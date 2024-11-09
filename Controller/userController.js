@@ -42,7 +42,8 @@ export var getUser = async (req, res) => {
   if (user.password != password) {
     res.set("Access-Control-Allow-Origin", "*");
     console.log(" ::: \n password , name::: " + password + " : " + name);
-    res.status(500).json({ message: "Wrong credentials" });
+    // res.status(500).json({ message: "Wrong credentials" });
+    res.status(500).send("Wrong credentials");
   } else {
     console.log(user + " ::: \n user1::: ");
     if (user != null) {
