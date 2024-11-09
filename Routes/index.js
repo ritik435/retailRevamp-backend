@@ -15,6 +15,10 @@ router.get(
   "/transaction/get-transactions",
   transactionController.getAllTransactions
 );
+router.delete(
+  "/transaction/delete-transactions",
+  transactionController.deleteAllTransactions
+);
 router.get("/transaction/transaction", transactionController.getTransaction);
 router.post(
   "/transaction/add-transaction",

@@ -21,6 +21,15 @@ export var getAllTransactions = async (req, res) => {
     );
   }
 };
+export var deleteAllTransactions = async (req, res) => {
+  const result = await Transaction.deleteMany({});
+  try {
+    res.set("Access-Control-Allow-Origin", "*");
+    res.status(200).send("all transaction deleted successfully: ");
+  } catch (error) {
+    res.status(500).send("Error in deleting all transaction : " + error);
+  }
+};
 
 export var getTransaction = async (req, res) => {
   const id = req.query.id;
