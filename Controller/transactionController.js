@@ -22,6 +22,7 @@ export var getAllTransactions = async (req, res) => {
   }
 };
 export var deleteAllTransactions = async (req, res) => {
+  const userId = req.query.userId;
   const result = await Transaction.deleteMany({ userId });
   try {
     res.set("Access-Control-Allow-Origin", "*");
