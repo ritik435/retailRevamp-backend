@@ -21,10 +21,10 @@ const transactionSchema = new Schema(
       type: String,
       required: false,
     },
-    date: {
-      type: Timestamp,
-      required: true,
-    },
+    // date: {
+    //   type: Timestamp,
+    //   required: true,
+    // },
     balance: {
       type: Number,
       required: false,
