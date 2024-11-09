@@ -69,6 +69,10 @@ const transactionSchema = new Schema(
       type: Boolean,
       required: false,
     },
+    userId: {
+      type: String,
+      required: true,
+    },
   },
   { __v: false }
 );

@@ -6,7 +6,7 @@ export var home = async (req, res) => {
 };
 
 export var getAllTransactions = async (req, res) => {
-  const transactions = await Transaction.find({});
+  const transactions = await Transaction.find({ userId });
   //   const apiResponse = new ApiResponse({
   //     status: 200,
   //     description: "succesfully done",
@@ -22,7 +22,7 @@ export var getAllTransactions = async (req, res) => {
   }
 };
 export var deleteAllTransactions = async (req, res) => {
-  const result = await Transaction.deleteMany({});
+  const result = await Transaction.deleteMany({ userId });
   try {
     res.set("Access-Control-Allow-Origin", "*");
     res.status(200).send("all transaction deleted successfully: ");
