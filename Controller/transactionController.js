@@ -69,7 +69,7 @@ export var postTransaction = async (req, res) => {
     console.log("transaction : " + transaction);
     res.json(transaction.toObject());
   } catch (error) {
-    res.status(500).send("Error in backing up transaction");
+    res.status(500).send("Error in backing up transaction : " + error);
   }
 };
 
