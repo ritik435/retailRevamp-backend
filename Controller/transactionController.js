@@ -55,6 +55,7 @@ export var getTransaction = async (req, res) => {
 
 export var postTransaction = async (req, res) => {
   console.log(req.body);
+  res.set("Access-Control-Allow-Origin", "*");
   const transaction = new Transaction(req.body);
   // const apiResponse = new ApiResponse({
   //   status: 200,
@@ -64,10 +65,9 @@ export var postTransaction = async (req, res) => {
 
   try {
     await transaction.save();
-    res.set("Access-Control-Allow-Origin", "*");
-    res.send(transaction);
+    res.json(transaction.toObject());
   } catch (error) {
-    res.json({ status: 500, description: "Transaction is not signed in" });
+    res.status(500).send("Error in backing up transaction");
   }
 };
 
