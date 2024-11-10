@@ -59,9 +59,10 @@ export var postKhata = async (req, res) => {
   try {
     await khata.save();
     res.set("Access-Control-Allow-Origin", "*");
-    console.log("transaction : " + khata);
+    console.log("khata : " + khata);
     res.json(khata.toObject());
   } catch (error) {
+    console.log("Error in backing up khata : " + error);
     res.status(500).send("Error in backing up khata : " + error);
   }
 };
