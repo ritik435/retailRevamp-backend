@@ -40,6 +40,10 @@ const khataSchema = new Schema(
       type: UUID,
       required: false,
     },
+    userId: {
+      type: String,
+      required: true,
+    },
   },
   { __v: false }
 );

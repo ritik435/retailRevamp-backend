@@ -23,17 +23,6 @@ export var getAllTransactions = async (req, res) => {
   }
 };
 
-export var deleteAllTransactions = async (req, res) => {
-  const userId = req.query.userId;
-  const result = await Transaction.deleteMany({ userId });
-  try {
-    res.set("Access-Control-Allow-Origin", "*");
-    res.status(200).send("all transaction deleted successfully: ");
-  } catch (error) {
-    res.status(500).send("Error in deleting all transaction : " + error);
-  }
-};
-
 export var getTransaction = async (req, res) => {
   const id = req.query.id;
   const name = req.query.name;
@@ -85,6 +74,16 @@ export var postTransaction = async (req, res) => {
   }
 };
 
+export var deleteAllTransactions = async (req, res) => {
+  const userId = req.query.userId;
+  const result = await Transaction.deleteMany({ userId });
+  try {
+    res.set("Access-Control-Allow-Origin", "*");
+    res.status(200).send("all transaction deleted successfully: ");
+  } catch (error) {
+    res.status(500).send("Error in deleting all transaction : " + error);
+  }
+};
 // export var deletePost = async (req, res) => {
 //   const id = req.query.id;
 //   console.log(id);
