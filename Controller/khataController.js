@@ -56,18 +56,13 @@ export var getKhata = async (req, res) => {
 export var postKhata = async (req, res) => {
   console.log(req.body);
   const khata = new Khata(req.body);
-  // const apiResponse = new ApiResponse({
-  //   status: 200,
-  //   description: "succesfully done",
-  //   result: user,
-  // });
-
   try {
     await khata.save();
     res.set("Access-Control-Allow-Origin", "*");
-    res.send(khata);
+    console.log("transaction : " + khata);
+    res.json(khata.toObject());
   } catch (error) {
-    res.json({ status: 500, description: "khata is not signed in" });
+    res.status(500).send("Error in backing up khata : " + error);
   }
 };
 
