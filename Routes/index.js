@@ -30,6 +30,7 @@ router.get("/khata", khataController.home);
 router.get("/khata/get-khata", khataController.getAllKhata);
 router.get("/khata/khata", khataController.getKhata);
 router.post("/khata/add-khata", khataController.postKhata);
+router.delete("/khata/delete-khatas", khataController.deleteAllKhatas);
 // router.delete("/khata/delete-post", khataController.deletePost);
 
 export default router;

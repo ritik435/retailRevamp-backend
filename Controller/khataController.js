@@ -67,6 +67,16 @@ export var postKhata = async (req, res) => {
   }
 };
 
+export var deleteAllKhatas = async (req, res) => {
+  const userId = req.query.userId;
+  const result = await Khata.deleteMany({ userId });
+  try {
+    res.set("Access-Control-Allow-Origin", "*");
+    res.status(200).send("all khata deleted successfully: " + result);
+  } catch (error) {
+    res.status(500).send("Error in deleting all transaction : " + error);
+  }
+};
 // export var deletePost = async (req, res) => {
 //   const id = req.query.id;
 //   console.log(id);
