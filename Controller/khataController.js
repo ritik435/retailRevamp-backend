@@ -6,7 +6,8 @@ export var home = async (req, res) => {
 };
 
 export var getAllKhata = async (req, res) => {
-  const khata = await Khata.find({});
+  const userId = req.query.userId;
+  const khata = await Khata.find({ userId });
   //   const apiResponse = new ApiResponse({
   //     status: 200,
   //     description: "succesfully done",
@@ -14,7 +15,7 @@ export var getAllKhata = async (req, res) => {
   //   });
   try {
     res.set("Access-Control-Allow-Origin", "*");
-    res.send(khata);
+    res.json(transactions);
   } catch (error) {
     res.send(
       new ApiResponse({ status: 500, description: "unsuccesfully done" })
