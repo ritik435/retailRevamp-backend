@@ -8,14 +8,10 @@ export var home = async (req, res) => {
 export var getAllKhata = async (req, res) => {
   const userId = req.query.userId;
   const khata = await Khata.find({ userId });
-  //   const apiResponse = new ApiResponse({
-  //     status: 200,
-  //     description: "succesfully done",
-  //     result: posts,
-  //   });
+  console.log("khatas : " + khata);
   try {
     res.set("Access-Control-Allow-Origin", "*");
-    res.json(transactions);
+    res.json(khata);
   } catch (error) {
     res.send(
       new ApiResponse({ status: 500, description: "unsuccesfully done" })
