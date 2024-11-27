@@ -17,6 +17,10 @@ const transactionSchema = new Schema(
     // String khataNumber;
     // boolean deleted;
     // boolean edited;
+    id: {
+      type: UUID,
+      required: false,
+    },
     userName: {
       type: String,
       required: false,
