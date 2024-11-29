@@ -22,37 +22,68 @@ export var getAllTransactions = async (req, res) => {
     );
   }
 };
-
 export var getTransaction = async (req, res) => {
   const id = req.query.id;
-  const name = req.query.name;
-  console.log(id);
-  const transaction = await Transaction.findOne({ _id: id }); // You can replace `_id` with any other field you want to query
+  console.log(`Fetching transaction with ID: ${id}`);
 
-  // const user = await User.findById(id);
-  // const apiResponse = new ApiResponse({
-  //   status: 200,
-  //   description: "succesfully done",
-  //   result: post,
-  // });
-  if (transaction != null) {
-    try {
+  try {
+    // Find the transaction by ID
+    const transaction = await Transaction.findOne({ _id: id });
+
+    if (transaction) {
+      // Ensure the UUID field is formatted properly if it exists
+      if (
+        transaction.transactionId &&
+        typeof transaction.transactionId === "object" &&
+        transaction.transactionId.toString
+      ) {
+        transaction.transactionId = transaction.transactionId.toString();
+      }
+
       res.set("Access-Control-Allow-Origin", "*");
-      res.send(transaction);
-      console.log(transaction);
-    } catch (error) {
-      res.json({
-        status: 500,
-        description: "Coulnot able to find transaction",
+      res.status(200).json(transaction); // Respond with the transaction
+      console.log("Transaction found:", transaction);
+    } else {
+      // If transaction not found, send a 404 response
+      res.status(404).json({
+        status: 404,
+        description: "Could not find transaction with this ID.",
       });
+      console.warn("No transaction found for the given ID.");
     }
-  } else {
-    res.json({
-      status: 404,
-      description: "Could not found transaction with this id",
+  } catch (error) {
+    console.error("Error occurred while fetching transaction:", error);
+
+    res.status(500).json({
+      status: 500,
+      description: "An error occurred while retrieving the transaction.",
     });
   }
 };
+
+// export var getTransaction = async (req, res) => {
+//   const id = req.query.id;
+//   const name = req.query.name;
+//   console.log(id);
+//   const transaction = await Transaction.findOne({ _id: id }); // You can replace `_id` with any other field you want to query
+//   if (transaction != null) {
+//     try {
+//       res.set("Access-Control-Allow-Origin", "*");
+//       res.send(transaction);
+//       console.log(transaction);
+//     } catch (error) {
+//       res.json({
+//         status: 500,
+//         description: "Coulnot able to find transaction",
+//       });
+//     }
+//   } else {
+//     res.json({
+//       status: 404,
+//       description: "Could not found transaction with this id",
+//     });
+//   }
+// };
 
 export var postTransaction = async (req, res) => {
   console.log(req.body);
