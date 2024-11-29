@@ -18,7 +18,7 @@ const transactionSchema = new Schema(
     // boolean deleted;
     // boolean edited;
     transactionId: {
-      type: UUID,
+      type: String,
       required: false,
     },
     userName: {
